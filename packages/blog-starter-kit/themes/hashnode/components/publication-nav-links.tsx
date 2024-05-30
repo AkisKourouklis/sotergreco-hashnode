@@ -54,7 +54,7 @@ function PublicationNavLinks(props: Props) {
             <Link
               className={twJoin(
                 item.isActive ? 'blog-nav-active' : 'blog-nav',
-                'group flex items-center justify-center border-b-2 border-transparent px-2 capitalize focus:outline-none',
+                'group flex items-center justify-center border-transparent px-2 capitalize focus:outline-none',
                 item.isActive
                   ? 'border-black dark:border-slate-50'
                   : '',

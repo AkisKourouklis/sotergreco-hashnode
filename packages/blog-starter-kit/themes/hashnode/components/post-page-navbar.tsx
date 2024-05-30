@@ -14,6 +14,7 @@ import useStickyNavScroll from './use-sticky-nav-scroll';
 import { PublicationFragment } from '../generated/graphql';
 import { Button } from './custom-button';
 import PublicationLogo from './publication-logo';
+import PublicationNavLinks from "./publication-nav-links";
 
 type Props = {
 	publication: Pick<PublicationFragment, 'id' | 'title' | 'links' | 'url' | 'features' | 'isTeam' | 'author' | 'preferences'>;
@@ -27,59 +28,53 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 	const commonIconBtnStyles = getCommonBtnStyles();
 
 	return (
-		<div className="container mx-auto px-2 md:px-4 md:py-1 2xl:px-10">
-			<div className="relative z-40 flex flex-row items-center justify-between pb-2 pt-8 md:py-4">
-				<div
-					className={twJoin(
-						'mb-2 flex flex-row items-center md:mb-0','dark:text-white',
-					)}
-				>
-					<HeaderTooltip
-						tooltipClassName="blog-home-tooltip"
-						tooltipText="Home"
-					>
-						<Link
-							href="/"
-							aria-label="Back to blog home"
-							className={twJoin('blog-back-to-home-button', commonIconBtnStyles, 'mr-2 p-3')}
-						>
-							<ChevronLeftSVG className="h-4 w-4 fill-current pr-1" />
-						</Link>
-					</HeaderTooltip>
-
-					{/* Navigation for mobile view */}
-					<div className="mr-2">
-						<HeaderLeftSidebar publication={publication} />
-					</div>
-
-					<div className="hidden md:block">
-						<PublicationLogo publication={publication} size="sm" withProfileImage isPostPage />
-					</div>
-				</div>
-
-				<div
-					className={twJoin(
-						'flex flex-row items-center','dark:text-white',
-					)}
-				>
-					<HeaderBlogSearch publication={publication} />
-					<Button as="a" href="#" type="primary" label="Sign up" />
-				</div>
-			</div>
-
-			{/* Logo for mobile view */}
-			<div className="mx-auto my-5 flex w-2/3 flex-row items-center justify-center md:hidden">
-				<PublicationLogo publication={publication} size="xl" isPostPage />
-			</div>
-
-			<div className="blog-sub-header mb-4 md:hidden" data-testid="blog-sub-header">
-				{/* Social Links for mobile view */}
-				<div className="mt-6">
-					<PublicationSocialLinks links={publication.links} />
-				</div>
-			</div>
-		</div>
-	);
+    <header
+      className="blog-header relative z-50 w-full border-b border-black/10 bg-white bg-opacity-70 dark:border-white/10 dark:bg-gray-950"
+    >
+      <div className="container mx-auto px-2 md:px-4 2xl:px-10">
+        {/* Logo for mobile view */}
+        <div className="mx-auto pt-2 flex w-2/3 flex-row items-center justify-center md:hidden">
+          <PublicationLogo publication={publication} size="xl"/>
+        </div>
+        <div className="relative z-40 flex flex-row items-center justify-between pb-2 pt-4 md:mb-4">
+          <div className="flex flex-row items-center py-1">
+            {/* Navigation for mobile view */}
+            <div
+              className={twJoin(
+                'md:hidden', 'dark:text-white',
+              )}
+            >
+              <HeaderLeftSidebar publication={publication}/>
+            </div>
+            <div className="hidden md:flex">
+              <PublicationLogo publication={publication} size="lg" withProfileImage/>
+            </div>
+          </div>
+          <div
+            className={twJoin(
+              'flex flex-row items-center', 'dark:text-white',
+            )}
+          >
+            <div className="blog-sub-header flex items-center me-1" data-testid="blog-sub-header">
+              {/* Desktop */}
+              <div className="justify-betweem mx-0 hidden w-full flex-row items-center md:flex">
+                <PublicationSocialLinks
+                  links={publication.links}
+                />
+              </div>
+              {/* Mobile view */}
+              <div className=" flex w-full flex-col items-center md:hidden">
+                <PublicationSocialLinks
+                  links={publication.links}
+                />
+              </div>
+            </div>
+            <HeaderBlogSearch publication={publication}/>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
 });
 
 PostPageNavbar.displayName = 'PostPageNavbar';

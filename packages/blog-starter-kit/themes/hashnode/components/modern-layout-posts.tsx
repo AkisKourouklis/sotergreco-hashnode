@@ -4,6 +4,7 @@ import Button from './hn-button';
 import { ChevronDownSVG } from './icons/svgs';
 import { PageInfo, PublicationFragment, PostThumbnailFragment } from '../generated/graphql';
 import BlogPostPreview from './magazine-blog-post-preview';
+import Ads from "./ads";
 
 const PublicationPosts = (props: {
   posts: {
@@ -25,41 +26,47 @@ const PublicationPosts = (props: {
 
   return (
     <div className="blog-articles-area mx-auto mt-10 dark:border-slate-800">
-      <div className="blog-articles-container container mx-auto grid grid-cols-1 gap-10 px-4 py-4 md:grid-cols-2 lg:grid-cols-3 xl:py-10 xl:px-10 2xl:px-24 2xl:py-5">
+      <div className="container mx-auto mt-8 px-4 xl:px-10 2xl:px-24">
+        <div className="border border-gray-100 rounded-lg overflow-hidden">
+          <Ads adLocation="home-mid"/>
+        </div>
+      </div>
+      <div
+        className="blog-articles-container container mx-auto grid grid-cols-1 gap-10 px-4 py-4 md:grid-cols-2 lg:grid-cols-3 xl:py-10 xl:px-10 2xl:px-24 2xl:py-5">
         {slicedPosts.map((post) => (
-          <BlogPostPreview key={post.id} post={post} publication={publication} />
+          <BlogPostPreview key={post.id} post={post} publication={publication}/>
         ))}
         {fetching && (
           <>
             <div className="col-span-1 animate-pulse">
               <div
-                style={{ paddingTop: '52.5%' }}
+                style={{paddingTop: '52.5%'}}
                 className="mb-4 block w-full rounded-lg bg-slate-200 dark:border-slate-800"
               />
-              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800" />
-              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800" />
-              <div className="mb-2 h-4 w-2/3 rounded-lg bg-slate-200 dark:border-slate-800" />
-              <div className="mb-2 h-4 w-1/2 rounded-lg bg-slate-200 dark:border-slate-800" />
+              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800"/>
+              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800"/>
+              <div className="mb-2 h-4 w-2/3 rounded-lg bg-slate-200 dark:border-slate-800"/>
+              <div className="mb-2 h-4 w-1/2 rounded-lg bg-slate-200 dark:border-slate-800"/>
             </div>
             <div className="col-span-1 animate-pulse">
               <div
-                style={{ paddingTop: '52.5%' }}
+                style={{paddingTop: '52.5%'}}
                 className="mb-4 block w-full rounded-lg bg-slate-200 dark:border-slate-800"
               />
-              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800" />
-              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800" />
-              <div className="mb-2 h-4 w-2/3 rounded-lg bg-slate-200 dark:border-slate-800" />
-              <div className="mb-2 h-4 w-1/2 rounded-lg bg-slate-200 dark:border-slate-800" />
+              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800"/>
+              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800"/>
+              <div className="mb-2 h-4 w-2/3 rounded-lg bg-slate-200 dark:border-slate-800"/>
+              <div className="mb-2 h-4 w-1/2 rounded-lg bg-slate-200 dark:border-slate-800"/>
             </div>
             <div className="col-span-1 animate-pulse">
               <div
-                style={{ paddingTop: '52.5%' }}
+                style={{paddingTop: '52.5%'}}
                 className="mb-4 block w-full rounded-lg bg-slate-200 dark:border-slate-800"
               />
-              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800" />
-              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800" />
-              <div className="mb-2 h-4 w-2/3 rounded-lg bg-slate-200 dark:border-slate-800" />
-              <div className="mb-2 h-4 w-1/2 rounded-lg bg-slate-200 dark:border-slate-800" />
+              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800"/>
+              <div className="mb-2 h-4 rounded-lg bg-slate-200 dark:border-slate-800"/>
+              <div className="mb-2 h-4 w-2/3 rounded-lg bg-slate-200 dark:border-slate-800"/>
+              <div className="mb-2 h-4 w-1/2 rounded-lg bg-slate-200 dark:border-slate-800"/>
             </div>
           </>
         )}
@@ -72,14 +79,15 @@ const PublicationPosts = (props: {
               onClick={fetchMore}
             >
               <span>Load more</span>
-              <ChevronDownSVG className="ml-3 h-5 w-5 fill-current" />
+              <ChevronDownSVG className="ml-3 h-5 w-5 fill-current"/>
             </Button>
           </div>
         ) : null}
       </div>
-      {fetchedOnce && pageInfo.hasNextPage ? <Waypoint onEnter={fetchMore} topOffset="-20%" /> : null}
+      {fetchedOnce && pageInfo.hasNextPage ? <Waypoint onEnter={fetchMore} topOffset="-20%"/> : null}
       {fetchedOnce && !pageInfo.hasNextPage ? (
-        <div className="blog-posts-end-card mt-10 px-16 py-8 text-center font-heading font-bold text-slate-700 dark:text-slate-300">
+        <div
+          className="blog-posts-end-card mt-10 px-16 py-8 text-center font-heading font-bold text-slate-700 dark:text-slate-300">
           <p className="text-2xl">You&apos;ve reached the end! 👋</p>
         </div>
       ) : null}
