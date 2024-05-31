@@ -27,6 +27,7 @@ import {BookOpenSVG} from './icons/svgs';
 // @ts-ignore
 import {triggerCustomWidgetEmbed} from '@starter-kit/utils/trigger-custom-widget-embed';
 import {createPostUrl} from '../utils/urls';
+import Ads from "./ads";
 
 moment.extend(relativeTime);
 moment.extend(localizedFormat);
@@ -274,15 +275,28 @@ export const PostHeader = ({post, morePosts}: Props) => {
 
             <div id="post-content-parent" className="relative mb-10 pb-14">
               {memoizedPostContent && (
-                <div
-                  id="post-content-wrapper"
-                  ref={postContentEle}
-                  className="prose prose-lg min-h-30 dark:prose-dark xl:prose-xl mx-auto mb-10 break-words"
-                  // eslint-disable-next-line react/no-danger
-                  dangerouslySetInnerHTML={{
-                    __html: memoizedPostContent,
-                  }}
-                />
+                <>
+                  <div
+                    id="post-content-wrapper"
+                    ref={postContentEle}
+                    className="prose prose-lg min-h-30 dark:prose-dark xl:prose-xl mx-auto mb-10 break-words"
+                    // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML={{
+                      __html: memoizedPostContent,
+                    }}
+                  />
+                  <div className="container mx-auto mt-8 px-4 xl:px-16 2xl:px-24 mb-12">
+                    <div className="border border-gray-100 rounded-lg overflow-hidden">
+                      <Ads adLocation="post-mid"/>
+                    </div>
+                    <div className="flex justify-center mt-4">
+                      <a href="https://photoai.com/?via=sotiris" target="_blank">
+                        <button className="rounded-full border border-white text-white p-3">Get PhotoAI NOW</button>
+                      </a>
+                    </div>
+                  </div>
+
+                </>
               )}
 
               {/* {props.isPublicationPost && renderPinnedWidgets(props.widgets, 'bottom')} */}
@@ -314,7 +328,6 @@ export const PostHeader = ({post, morePosts}: Props) => {
               </div>
             )}
 
-            <AboutAuthor/>
           </div>
         </section>
       </div>

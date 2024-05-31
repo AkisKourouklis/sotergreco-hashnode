@@ -64,16 +64,6 @@ function PublicationSubscribeStandOut() {
 
   return (
     <>
-      <div className="container mx-auto mt-8 px-4 xl:px-10 2xl:px-24">
-        <div className="border border-gray-100 rounded-lg overflow-hidden">
-          <Ads adLocation="post-mid"/>
-        </div>
-        <div className="flex justify-center mt-4">
-          <a href="https://photoai.com/?via=sotiris" target="_blank">
-            <button className="rounded-full border border-white text-white p-3">Get PhotoAI NOW</button>
-          </a>
-        </div>
-      </div>
       <div className="my-10 mt-20 flex w-full flex-col items-center pb-10 md:px-5">
         <h3 className="mb-5 text-center font-heading text-2xl font-bold text-slate-900 dark:text-slate-50 md:text-3xl">
           Subscribe to {publication!.isTeam ? 'our' : 'my'} newsletter

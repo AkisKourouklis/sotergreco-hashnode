@@ -1,7 +1,7 @@
 import CustomImage from '../components/custom-image';
 import PublicationSubscribeStandOut from '../components/publication-subscribe-standout';
-import { resizeImage } from '../utils/image';
-import { AppProvider } from '../components/contexts/appContext';
+import {resizeImage} from '../utils/image';
+import {AppProvider} from '../components/contexts/appContext';
 
 import BlogPostPreview from '../components/magazine-blog-post-preview';
 import {
@@ -10,11 +10,11 @@ import {
   PostThumbnailFragment,
   PublicationFragment,
 } from '../generated/graphql';
-import { createHeaders, createSSRExchange, getUrqlClientConfig } from '../lib/api/client';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { log as _log } from 'next-axiom';
-import { initUrqlClient } from 'next-urql';
-import { Header } from '../components/header';
+import {createHeaders, createSSRExchange, getUrqlClientConfig} from '../lib/api/client';
+import {GetServerSideProps, InferGetServerSidePropsType} from 'next';
+import {log as _log} from 'next-axiom';
+import {initUrqlClient} from 'next-urql';
+import {Header} from '../components/header';
 import PublicationFooter from '../components/publication-footer';
 
 type Props = {
@@ -24,25 +24,26 @@ type Props = {
 }
 
 const Newsletter = (props: Props) => {
-  const { recent3Posts, publication, currentMenuId } = props;
+  const {recent3Posts, publication, currentMenuId} = props;
 
   const profile = publication.author;
 
   const recentPosts = recent3Posts.map((post: any) => (
-    <BlogPostPreview key={post.id} post={post} publication={publication} />
+    <BlogPostPreview key={post.id} post={post} publication={publication}/>
   ));
   const originalImageSrc =
     publication.favicon ||
     profile?.profilePicture ||
     'https://cdn.hashnode.com/res/hashnode/image/upload/v1600792675173/rY-APy9Fc.png';
 
-  const publicationImageUrl = resizeImage(originalImageSrc, { w: 400, h: 400, c: 'face' });
+  const publicationImageUrl = resizeImage(originalImageSrc, {w: 400, h: 400, c: 'face'});
 
   return (
     <AppProvider publication={publication}>
       <Header currentMenuId={currentMenuId} isHome={false}/>
-      <div className="blog-page-area mx-auto min-h-screen px-4 pb-8 pt-20 md:px-10 md:pt-20">
-        <div className="blog-page-card container relative z-30 mx-auto grid grid-flow-row grid-cols-8 pb-0 2xl:grid-cols-10">
+      <div className="bg-black blog-page-area mx-auto min-h-screen px-4 pb-8 pt-20 md:px-10 md:pt-20">
+        <div
+          className="blog-page-card container relative z-30 mx-auto grid grid-flow-row grid-cols-8 pb-0 2xl:grid-cols-10">
           <div className="col-span-full">
             <span className="mx-auto -mb-10 block h-32 w-32 overflow-hidden rounded-full">
               <CustomImage
@@ -56,7 +57,7 @@ const Newsletter = (props: Props) => {
                 layout="responsive"
               />
             </span>
-            <PublicationSubscribeStandOut />
+            <PublicationSubscribeStandOut/>
           </div>
         </div>
         {recent3Posts && recent3Posts.length > 0 && (
@@ -66,23 +67,24 @@ const Newsletter = (props: Props) => {
                 Recent articles
               </h3>
             </div>
-            <div className="blog-articles-container container mx-auto grid grid-cols-1 gap-10 px-4 md:grid-cols-2 lg:grid-cols-3 xl:px-10 xl:py-10 2xl:px-24 2xl:py-5">
+            <div
+              className="blog-articles-container container mx-auto grid grid-cols-1 gap-10 px-4 md:grid-cols-2 lg:grid-cols-3 xl:px-10 xl:py-10 2xl:px-24 2xl:py-5">
               {recentPosts}
             </div>
           </>
         )}
       </div>
       {publication ? (
-				<PublicationFooter
-					authorName={publication.author.name}
-					title={publication.title}
-					imprint={publication.imprint}
-					disableFooterBranding={publication.preferences.disableFooterBranding}
-					isTeam={publication.isTeam}
-					logo={publication.preferences.logo}
-					darkMode={publication.preferences.darkMode}
-				/>
-				) : null}
+        <PublicationFooter
+          authorName={publication.author.name}
+          title={publication.title}
+          imprint={publication.imprint}
+          disableFooterBranding={publication.preferences.disableFooterBranding}
+          isTeam={publication.isTeam}
+          logo={publication.preferences.logo}
+          darkMode={publication.preferences.darkMode}
+        />
+      ) : null}
     </AppProvider>
   );
 };
@@ -91,9 +93,9 @@ export const getServerSideProps: GetServerSideProps<{
   publication: PublicationFragment;
   recent3Posts: PostThumbnailFragment[];
 }> = async (ctx) => {
-  const { req, res, query } = ctx;
+  const {req, res, query} = ctx;
   const host = process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST;
-  const log = _log.with({ host });
+  const log = _log.with({host});
 
   const ssrCache = createSSRExchange();
   const urqlClient = initUrqlClient(getUrqlClientConfig(ssrCache), false);
@@ -128,7 +130,7 @@ export const getServerSideProps: GetServerSideProps<{
     };
   }
 
-  const { publication } = publicationInfo.data;
+  const {publication} = publicationInfo.data;
 
   if (!publication.preferences.enabledPages?.newsletter) {
     return {
