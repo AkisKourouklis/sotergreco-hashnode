@@ -7,18 +7,18 @@ const Ads = (props: {
   if (adLocation === 'home-top') {
     return (
       <>
-        <a className="hidden md:block" target="_blank" href="https://shipfa.st/?via=sotiris">
+        <a className="hidden md:block" target="_blank" href="https://linkinbio.cc/?via=sotiris">
           <Image
-            src='/shipfast-1-small.gif'
+            src='/linkinbio-1.gif'
             alt="ad"
             width={1200}
             height={130}
             loading="lazy"
           />
         </a>
-        <a target="_blank" href="https://shipfa.st/?via=sotiris" className="block md:hidden">
+        <a target="_blank" href="https://linkinbio.cc/?via=sotiris" className="block md:hidden">
           <Image
-            src='/shipfast-1-mobile.gif'
+            src='/linkinbio-1-mobile.gif'
             alt="ad"
             width={1200}
             height={280}
@@ -31,18 +31,18 @@ const Ads = (props: {
   if (adLocation === 'home-mid') {
     return (
       <>
-        <a className="hidden md:block" target="_blank" href="https://shipfa.st/?via=sotiris">
+        <a className="hidden md:block" target="_blank" href="https://linkinbio.cc/?via=sotiris">
           <Image
-            src='/shipfast-1-small.gif'
+            src='/linkinbio-1.gif'
             alt="ad"
             width={1200}
             height={130}
             loading="lazy"
           />
         </a>
-        <a target="_blank" href="https://shipfa.st/?via=sotiris" className="block md:hidden">
+        <a target="_blank" href="https://linkinbio.cc/?via=sotiris" className="block md:hidden">
           <Image
-            src='/shipfast-1-mobile.gif'
+            src='/linkinbio-1-mobile.gif'
             alt="ad"
             width={1200}
             height={280}
