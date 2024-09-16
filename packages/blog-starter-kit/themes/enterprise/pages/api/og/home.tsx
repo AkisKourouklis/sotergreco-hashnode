@@ -64,7 +64,7 @@ export default async function handler(req: NextRequest) {
 		(
 			<div
 				style={{
-					fontFamily: '"Plus Jakarta Sans"',
+					fontFamily: '"Roboto Mono"',
 				}}
 				tw={`relative flex h-full w-full p-8 bg-white`}
 			>
