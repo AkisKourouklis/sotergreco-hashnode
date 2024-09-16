@@ -290,8 +290,8 @@ export const PostHeader = ({post, morePosts}: Props) => {
                       <Ads adLocation="post-mid"/>
                     </div>
                     <div className="flex justify-center mt-4">
-                      <a href="https://photoai.com/?via=sotiris" target="_blank">
-                        <button className="rounded-full border border-white text-white p-3">Get PhotoAI NOW</button>
+                      <a href="https://reporanger.xyz" target="_blank">
+                        <button className="rounded-full border border-white text-white p-3">Check out Repo-Ranger</button>
                       </a>
                     </div>
                   </div>
